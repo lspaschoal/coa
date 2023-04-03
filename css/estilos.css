@@ -1,0 +1,178 @@
+:root {
+  --verde-vmc: #92D050;
+  --amarelo-imc: #FEE977;
+  --vermelho-qgo: #E60101;
+  --cinza-indisponivel: #BFBFBF;
+}
+
+/*amarelo alternativo: #ffe555 */
+@font-face {
+  font-family: LexendDeca-Light;
+  src: url('../fonts/LexendDeca-Light.ttf');
+}
+
+html{
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}
+
+body {
+  background-image: url('../img/bg-body.png');
+  background-repeat: repeat;
+  margin: 0;
+}
+
+#interface{
+  display: flex;
+  align-items: stretch;
+}
+
+#seletor{
+  background-color: black;
+  cursor: pointer;
+}
+
+.btn_toogle{
+  padding: 0.5rem;
+  text-align: center;
+  color: azure;
+  font-family: monospace;
+}
+
+.btn_inativo{
+  color: rgb(104, 104, 104);
+}
+
+#painel {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+}
+
+.card {
+  height: 13rem;
+  width: 23rem;
+  margin: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  font-family: LexendDeca-Light;
+}
+
+.card > div {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.linha_superior {
+  grid-area: 1 / 1 / 2 / 4;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icao{
+  font-weight: 900;
+  font-size: 1.7rem;
+}
+
+.condicao{
+  font-size: 1.7rem;
+}
+
+.visibilidade {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.meteorologia {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.teto {
+  grid-area: 3 / 1 / 4 / 2;
+}
+
+.och {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.vento {
+  grid-area: 4 / 1 / 5 / 2;
+}
+
+.rajada {
+  grid-area: 4 / 2 / 5 / 3;
+}
+
+.cabeceiras {
+  grid-area: 2 / 3 / 5 / 4;
+}
+
+.VMC {
+  background-color: var(--verde-vmc);
+  border-radius: 5px;
+}
+
+.IMC {
+  background-color: var(--amarelo-imc);
+  border-radius: 5px;
+}
+
+.QGO {
+  background-color: var(--vermelho-qgo);
+  border-radius: 5px;
+}
+
+.INDISPONIVEL{
+  background-color: var(--cinza-indisponivel);
+  border-radius: 5px;
+}
+
+.icone_condicao{
+  width: 1.8rem;
+  margin-right: 3px;
+}
+
+.icone_meteorologia{
+  width: 2.0rem;
+  margin-right: 3px;
+}
+
+.icone_alerta{
+  width: 1.5rem;
+  margin-right: 3px;
+}
+
+.tabela_cabeceiras{
+  border-spacing: 0.2rem;
+}
+
+.tabela_cabeceiras > tr > td{
+  width: 2rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
+}
+
+.tabela_cabeceiras > tr > td:not(:first-child){
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.proc_na{
+  color: rgba(0,0,0,0.25)
+}
+
+.proc_qgn{
+  background-color: #01FF22;
+}
+.proc_qgo{
+  background-color: #A9042A;
+}
