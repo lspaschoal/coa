@@ -152,7 +152,9 @@ class View {
         let span_valor = document.createElement('span');
         if (vento === undefined) {
             span_valor.textContent = 'N/A';
-        } else {
+        } else if(vento.calm){
+            span_valor.textContent = 'VENTO CALMO';
+        }else{
             let direcao = vento.direction;
             if(vento.variable){
                 direcao = 'VRB';
@@ -161,6 +163,8 @@ class View {
                     direcao = `00${direcao}°`;
                 } else if (direcao < 100) {
                     direcao = `0${direcao}°`;
+                }else{
+                    direcao = `${direcao}°`;
                 }
             }
             let velocidade = vento.speed;
