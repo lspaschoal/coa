@@ -16,7 +16,7 @@ class View {
         card.appendChild(this.div_visibilidade(status.visibilidade));
         card.appendChild(this.div_meteorologia(status.meteorologia));
         card.appendChild(this.div_teto(status.teto));
-        card.appendChild(this.div_och(status.condicao,status.procedimentos));
+        card.appendChild(this.div_och(status.condicao, status.procedimentos));
         card.appendChild(this.div_vento(status.vento));
         card.appendChild(this.div_rajada(status.vento));
         card.appendChild(this.div_cabeceiras(status));
@@ -93,10 +93,18 @@ class View {
         icone_nevoeiro.setAttribute('src', './img/nevoeiro.png');
         //
         for (let item of meteorologia) {
-            if (item === 'TSRA' || item === '+TSRA' || item === '-TSRA') { div.appendChild(icone_tsra); };
-            if (item === 'RA' || item === '+RA' || item === '-RA') { div.appendChild(icone_chuva); };
-            if (item === 'FG') { div.appendChild(icone_nevoeiro); };
-            if (item === 'BR') { div.appendChild(icone_nevoeiro); };
+            if (item === 'TSRA' || item === '+TSRA' || item === '-TSRA') {
+                div.appendChild(icone_tsra);
+            };
+            if (item === 'RA' || item === '+RA' || item === '-RA') {
+                div.appendChild(icone_chuva);
+            };
+            if (item === 'FG') {
+                div.appendChild(icone_nevoeiro);
+            };
+            if (item === 'BR') {
+                div.appendChild(icone_nevoeiro);
+            };
         }
         return div;
     }
@@ -114,16 +122,16 @@ class View {
         if (teto === undefined) {
             span_valor.textContent = 'N/A';
         } else {
-            (teto === 'UNL') ? span_valor.textContent = 'UNL' : span_valor.textContent = teto + 'ft';
+            (teto === 'UNL') ? span_valor.textContent = 'UNL': span_valor.textContent = teto + 'ft';
         }
         div.appendChild(span_valor);
         return div;
     }
 
-    div_och = function (condicao,procedimentos) {
+    div_och = function (condicao, procedimentos) {
         let div = document.createElement('div');
         div.classList.add('och');
-        if(condicao !== undefined){
+        if (condicao !== undefined) {
             for (let procedimento of procedimentos) {
                 if (!procedimento.ochOK) {
                     let ico = document.createElement('img');
@@ -152,18 +160,18 @@ class View {
         let span_valor = document.createElement('span');
         if (vento === undefined) {
             span_valor.textContent = 'N/A';
-        } else if(vento.calm){
+        } else if (vento.calm) {
             span_valor.textContent = 'VENTO CALMO';
-        }else{
+        } else {
             let direcao = vento.direction;
-            if(vento.variable){
+            if (vento.variable) {
                 direcao = 'VRB';
-            }else{
+            } else {
                 if (direcao < 10) {
                     direcao = `00${direcao}°`;
                 } else if (direcao < 100) {
                     direcao = `0${direcao}°`;
-                }else{
+                } else {
                     direcao = `${direcao}°`;
                 }
             }
@@ -208,27 +216,27 @@ class View {
             td_rnav.textContent = 'RNP';
             let td_ils = document.createElement('td');
             td_ils.textContent = 'ILS';
-            if(status.condicao === undefined){
+            if (status.condicao === undefined) {
                 td_rnp.classList.add('proc_na');
                 td_rnav.classList.add('proc_na');
                 td_ils.classList.add('proc_na');
-            }else{
-                let condicao_rnp = status.getCondicaoTipoProcedimento(thr.cabeceira, 'RNP');
-                if(condicao_rnp !== null){
-                    (condicao_rnp) ? td_rnp.classList.add('proc_ok') : td_rnp.classList.add('proc_qgo')
-                }else{
+            } else {
+                let condicao_rnp = status.getCondicaoTipoProcedimento(thr.cabeceira, 'RNPAR');
+                if (condicao_rnp !== null) {
+                    (condicao_rnp) ? td_rnp.classList.add('proc_ok'): td_rnp.classList.add('proc_qgo')
+                } else {
                     td_rnp.classList.add('proc_na');
                 };
                 let condicao_rnav = status.getCondicaoTipoProcedimento(thr.cabeceira, 'RNAV');
-                if(condicao_rnav !== null){
-                    (condicao_rnav) ? td_rnav.classList.add('proc_ok') : td_rnav.classList.add('proc_qgo');
-                }else{
+                if (condicao_rnav !== null) {
+                    (condicao_rnav) ? td_rnav.classList.add('proc_ok'): td_rnav.classList.add('proc_qgo');
+                } else {
                     td_rnav.classList.add('proc_na');
                 }
                 let condicao_ils = status.getCondicaoTipoProcedimento(thr.cabeceira, 'ILS');
-                if(condicao_ils !== null) {
-                    (condicao_ils) ? td_ils.classList.add('proc_ok') : td_ils.classList.add('proc_qgo');
-                }else{
+                if (condicao_ils !== null) {
+                    (condicao_ils) ? td_ils.classList.add('proc_ok'): td_ils.classList.add('proc_qgo');
+                } else {
                     td_ils.classList.add('proc_na');
                 }
             }
@@ -243,4 +251,3 @@ class View {
 
 
 }
-
