@@ -1,17 +1,17 @@
 :root {
-  --verde-vmc: #92D050;
-  --amarelo-imc: #FEE977;
-  --vermelho-qgo: #E60101;
-  --cinza-indisponivel: #BFBFBF;
+  --verde-vmc: #92d050;
+  --amarelo-imc: #fee977;
+  --vermelho-qgo: #e60101;
+  --cinza-indisponivel: #bfbfbf;
 }
 
 /*amarelo alternativo: #ffe555 */
 @font-face {
   font-family: LexendDeca-Light;
-  src: url('../fonts/LexendDeca-Light.ttf');
+  src: url("../fonts/LexendDeca-Light.ttf");
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
@@ -21,29 +21,29 @@ html{
 }
 
 body {
-  background-image: url('../img/bg-body.png');
+  background-image: url("../img/bg-body.png");
   background-repeat: repeat;
   margin: 0;
 }
 
-#interface{
+#interface {
   display: flex;
   align-items: stretch;
 }
 
-#seletor{
+#seletor {
   background-color: black;
   cursor: pointer;
 }
 
-.btn_toogle{
+.btn_toogle {
   padding: 0.5rem;
   text-align: center;
   color: azure;
   font-family: monospace;
 }
 
-.btn_inativo{
+.btn_inativo {
   color: rgb(104, 104, 104);
 }
 
@@ -79,12 +79,12 @@ body {
   justify-content: space-between;
 }
 
-.icao{
+.icao {
   font-weight: 900;
   font-size: 1.7rem;
 }
 
-.condicao{
+.condicao {
   font-size: 1.7rem;
 }
 
@@ -131,48 +131,118 @@ body {
   border-radius: 5px;
 }
 
-.INDISPONIVEL{
+.INDISPONIVEL {
   background-color: var(--cinza-indisponivel);
   border-radius: 5px;
 }
 
-.icone_condicao{
+.icone_condicao {
   width: 1.8rem;
   margin-right: 3px;
 }
 
-.icone_meteorologia{
-  width: 2.0rem;
+.icone_meteorologia {
+  width: 2rem;
   margin-right: 3px;
 }
 
-.icone_alerta{
+.icone_alerta {
   width: 1.5rem;
   margin-right: 3px;
 }
 
-.tabela_cabeceiras{
+.tabela_cabeceiras {
   border-spacing: 0.2rem;
 }
 
-.tabela_cabeceiras > tr > td{
+.tabela_cabeceiras > tr > td {
   width: 2rem;
   margin: 1rem;
   border-radius: 0.3rem;
+  text-align: center;
 }
 
-.tabela_cabeceiras > tr > td:not(:first-child){
+.tabela_cabeceiras > tr > td:not(:first-child) {
   font-size: 0.8rem;
   text-align: center;
 }
 
-.proc_na{
-  color: rgba(0,0,0,0.25)
+.thr_qgo {
+  color: white;
+  background-color: #a9042a;
 }
 
-.proc_qgn{
-  background-color: #01FF22;
+.proc_na {
+  color: rgba(0, 0, 0, 0.25);
 }
-.proc_qgo{
-  background-color: #A9042A;
+
+.proc_qgn {
+  color: #01ff22;
+}
+
+.proc_qgo {
+  color: #a9042a;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  font-family: sans-serif;
+  justify-content: center;
+  text-align: justify;
+  display: none;
+}
+
+.metar_modal {
+  margin-bottom: 1rem;
+}
+
+.metar_modal > span {
+  font-size: 1.8rem;
+}
+
+#metar_raw {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.titulo_minimos {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.tabela_minimos {
+  width: 100%;
+}
+
+.tabela_minimos th {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+#dados_minimos {
+  font-size: 1.6rem;
+  text-align: center;
 }
