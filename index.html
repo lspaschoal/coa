@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estilos.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/estilos.css" />
     <title>Condições Operacionais nos Aeroportos</title>
-</head>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+  </head>
 
-<body>
+  <body>
     <div id="interface">
-        <div id="seletor"></div>
-        <div id="painel"></div>
+      <div id="seletor"></div>
+      <div id="painel"></div>
+      <div class="overlay" id="overlay"></div>
+      <div class="modal" id="modal">
+        <div class="metar_modal">
+          <span>METAR: </span>
+          <span id="metar_raw"></span>
+        </div>
+        <div id="minimos">
+          <div class="titulo_minimos">MÍNIMOS</div>
+          <div id="dados_minimos"></div>
+        </div>
+      </div>
     </div>
     <script src="js/dados.js"></script>
     <script src="js/Metar.js"></script>
     <script src="js/Status.js"></script>
     <script src="js/View.js"></script>
     <script src="js/main.js"></script>
-</body>
-
+  </body>
 </html>
