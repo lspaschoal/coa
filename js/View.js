@@ -285,7 +285,7 @@ class View {
     div.appendChild(ico);
     // valor
     let span_valor = document.createElement("span");
-    if (vento === undefined) {
+    if (vento === undefined || vento.speed === undefined) {
       span_valor.textContent = "N/A";
     } else if (vento.calm) {
       span_valor.textContent = "VENTO CALMO";
