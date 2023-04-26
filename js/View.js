@@ -10,51 +10,6 @@ class View {
     let card = document.createElement("div");
     card.classList.add("card");
     card.id = status.icao;
-    // card.addEventListener("click", () => {
-    //   let mensagem = "";
-    //   if (METARS.get(status.icao) !== undefined) {
-    //     mensagem = METARS.get(status.icao).getRawMessage() + "\n";
-    //   } else {
-    //     mensagem = "METAR INDISPONÍVEL\n";
-    //   }
-    //   mensagem += `=== MÍNIMOS ===\n`;
-    //   DADOS.getPistas(status.icao).forEach((pista) => {
-    //     mensagem += ` RWY: ${pista}\n`;
-    //     mensagem += ` -> DEP:\n`;
-    //     mensagem += `    -DIURNO: ${
-    //       DADOS.getMinimosDep(status.icao, pista).diurno
-    //     }m\n`;
-    //     mensagem += `    -NOTURNO: ${
-    //       DADOS.getMinimosDep(status.icao, pista).noturno
-    //     }m\n`;
-    //     mensagem += ` -> ARR:\n`;
-    //     let cabeceiras = pista.split("/");
-    //     let minimo = 5000;
-    //     if (DADOS.getProcedimentos(status.icao, cabeceiras[0]) !== null) {
-    //       Object.values(
-    //         DADOS.getProcedimentos(status.icao, cabeceiras[0])
-    //       ).forEach((procedimento) => {
-    //         if (procedimento.minVisibilidade < minimo)
-    //           minimo = procedimento.minVisibilidade;
-    //       });
-    //     }
-    //     mensagem += `    -THR ${cabeceiras[0]}: ${minimo}m\n`;
-    //     minimo = 5000;
-    //     if (DADOS.getProcedimentos(status.icao, cabeceiras[1]) !== null) {
-    //       Object.values(
-    //         DADOS.getProcedimentos(status.icao, cabeceiras[0])
-    //       ).forEach((procedimento) => {
-    //         if (procedimento.minVisibilidade < minimo)
-    //           minimo = procedimento.minVisibilidade;
-    //       });
-    //     }
-    //     mensagem += `    -THR ${cabeceiras[1]}: ${minimo}m\n`;
-    //   });
-
-    //   document.getElementById("modal").innerHTML = mensagem;
-    //   document.getElementById("modal").style.display = "block";
-    //   document.getElementById("overlay").style.display = "block";
-    // });
     card.classList.add(this.defineCondicao(status.condicao));
     card.appendChild(
       this.linhaSuperior(status.icao, status.iata, status.condicao)
@@ -77,38 +32,6 @@ class View {
     } else {
       document.getElementById("metar_raw").textContent = "METAR indisponível";
     }
-    // DADOS.getPistas(status.icao).forEach((pista) => {
-    //   let tabela = document.createElement("table");
-    //   tabela.classList.add("tabela_minimos");
-    //   let linha_titulo = document.createElement("tr");
-    //   let th = document.createElement("th");
-    //   th.colSpan = 5;
-    //   th.textContent = pista;
-    //   let linha_dep = document.createElement("tr");
-    //   let td_dep_1 = document.createElement("td");
-    //   td_dep_1.textContent = "DEP:";
-    //   linha_dep.appendChild(td_dep_1);
-    //   let td_dep_2 = document.createElement("td");
-    //   td_dep_2.colSpan = 2;
-    //   td_dep_2.textContent =
-    //     "Diurno: " + DADOS.getMinimosDep(status.icao, pista).diurno;
-    //   linha_dep.appendChild(td_dep_2);
-    //   let td_dep_3 = document.createElement("td");
-    //   td_dep_2.colSpan = 2;
-    //   td_dep_3.textContent =
-    //     "Noturno: " + DADOS.getMinimosDep(status.icao, pista).noturno;
-    //   linha_dep.appendChild(td_dep_3);
-    //   tr_ils;
-    //   linha_titulo.appendChild(th);
-    //   tabela.appendChild(linha_titulo);
-    //   tabela.appendChild(linha_dep);
-    //   let cabeceiras = pista.split("/");
-    //   cabeceiras.forEach((thr) => {
-    //     if (DADOS.getProcedimentos(status.icao, thr) !== null) {
-    //     }
-    //   });
-    //   document.getElementById("dados_minimos").appendChild(tabela);
-    // });
 
     let mensagem = "";
     DADOS.getPistas(status.icao).forEach((pista) => {
@@ -135,7 +58,7 @@ class View {
       minimo = 5000;
       if (DADOS.getProcedimentos(status.icao, cabeceiras[1]) !== null) {
         Object.values(
-          DADOS.getProcedimentos(status.icao, cabeceiras[0])
+          DADOS.getProcedimentos(status.icao, cabeceiras[1])
         ).forEach((procedimento) => {
           if (procedimento.minVisibilidade < minimo)
             minimo = procedimento.minVisibilidade;
@@ -203,7 +126,7 @@ class View {
   div_meteorologia = function (meteorologia) {
     let div = document.createElement("div");
     div.classList.add("meteorologia");
-    //icones:
+    //icones
     //trovoada com chuva
     let icone_tsra = document.createElement("img");
     icone_tsra.classList.add("icone_meteorologia");
