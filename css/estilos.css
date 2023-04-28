@@ -67,7 +67,7 @@ body {
   font-family: LexendDeca-Light;
 }
 
-.card > div {
+.card>div {
   padding: 5px;
   display: flex;
   align-items: center;
@@ -155,14 +155,14 @@ body {
   border-spacing: 0.2rem;
 }
 
-.tabela_cabeceiras > tr > td {
+.tabela_cabeceiras>tr>td {
   width: 2rem;
   margin: 1rem;
   border-radius: 0.3rem;
   text-align: center;
 }
 
-.tabela_cabeceiras > tr > td:not(:first-child) {
+.tabela_cabeceiras>tr>td:not(:first-child) {
   font-size: 0.8rem;
   text-align: center;
 }
@@ -217,12 +217,23 @@ body {
   margin-bottom: 1rem;
 }
 
-.metar_modal > span {
+.metar_modal>span {
   font-size: 1.8rem;
 }
 
 #metar_raw {
   font-family: "Courier New", Courier, monospace;
+}
+
+#botao_fechar {
+  width: 2.0rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+#copy_icon {
+  width: 1.8rem;
 }
 
 .titulo_minimos {
