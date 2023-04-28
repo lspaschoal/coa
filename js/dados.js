@@ -1241,8 +1241,8 @@ AEROPORTOS.SBRJ.pistas.RWY_02R_20L = {
     rcll: false,
     hirl: false,
     rvr: 0,
-    min_dep_diurno: 800,
-    min_dep_noturno: 800
+    min_dep_diurno: 4000,
+    min_dep_noturno: 4000
 };
 AEROPORTOS.SBSG.pistas.RWY_12_30 = {
     designativo: '12/30',
