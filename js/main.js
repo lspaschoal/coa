@@ -4,10 +4,10 @@ const VIEW = new View();
 
 function atualizar() {
   fetch(
-    `https://api-redemet.decea.mil.br/mensagens/metar/${DADOS.getAllIcao().join(
+      `https://api-redemet.decea.mil.br/mensagens/metar/${DADOS.getAllIcao().join(
       ","
     )}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
-  )
+    )
     .then((res) => res.json())
     .then((data) => data.data.data)
     .then((data_array) =>
@@ -50,6 +50,11 @@ function toogle(icao) {
   exibir();
 }
 
+const fecharModal = () => {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+}
+
 (() => {
   DADOS.getAllIcao().forEach((icao) => {
     METARS.set(icao, undefined);
@@ -60,23 +65,11 @@ function toogle(icao) {
     btn_toogle.textContent = icao;
     btn_toogle.setAttribute("onClick", `toogle("${icao}")`);
     document.getElementById("seletor").appendChild(btn_toogle);
-    document.getElementById("modal").addEventListener("click", () => {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("modal").style.display = "none";
-    });
-    document.getElementById("overlay").addEventListener("click", () => {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("modal").style.display = "none";
-    });
+    document.getElementById("botao_fechar").addEventListener("click", fecharModal);
   });
+  document.getElementById('copy_icon').addEventListener('click', evt => {
+    navigator.clipboard.writeText(document.getElementById("metar_raw").textContent);
+  })
   atualizar();
   setInterval(atualizar, 5 * 60 * 1000);
 })();
-
-// let metar = new Metar('METAR SBBR 192300Z 36009G15KT 330V030 5000 BKN001 TSRA BR SCT035 SCT090 22/17 Q1018=');
-// let sts = new Status('SBBR');
-// sts.setMeteorologia(metar);
-// sts.setCondicao();
-
-// console.log(sts);
-// document.getElementById('painel').appendChild(VIEW.gerarCard(sts));
