@@ -22,6 +22,7 @@ function atualizar() {
         status.setCondicao();
         STATUS.set(icao, status);
       });
+      console.log('Atualizado em: '+ new Date().toGMTString());
       exibir();
     });
 }
