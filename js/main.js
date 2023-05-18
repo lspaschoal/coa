@@ -71,5 +71,5 @@ const fecharModal = () => {
     navigator.clipboard.writeText(document.getElementById("metar_raw").textContent);
   })
   atualizar();
-  setInterval(atualizar, 5 * 60 * 1000);
+  setInterval(atualizar, 60000);
 })();
