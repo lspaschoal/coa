@@ -4,10 +4,10 @@ const VIEW = new View();
 
 function atualizar() {
   fetch(
-      `https://api-redemet.decea.mil.br/mensagens/metar/${DADOS.getAllIcao().join(
+    `https://api-redemet.decea.mil.br/mensagens/metar/${DADOS.getAllIcao().join(
       ","
     )}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
-    )
+  )
     .then((res) => res.json())
     .then((data) => data.data.data)
     .then((data_array) =>
@@ -22,7 +22,7 @@ function atualizar() {
         status.setCondicao();
         STATUS.set(icao, status);
       });
-      console.log('Atualizado em: '+ new Date().toGMTString());
+      console.log("Atualizado em: " + new Date().toGMTString());
       exibir();
     });
 }
@@ -54,7 +54,7 @@ function toogle(icao) {
 const fecharModal = () => {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("modal").style.display = "none";
-}
+};
 
 (() => {
   DADOS.getAllIcao().forEach((icao) => {
@@ -66,11 +66,22 @@ const fecharModal = () => {
     btn_toogle.textContent = icao;
     btn_toogle.setAttribute("onClick", `toogle("${icao}")`);
     document.getElementById("seletor").appendChild(btn_toogle);
-    document.getElementById("botao_fechar").addEventListener("click", fecharModal);
+    document
+      .getElementById("botao_fechar")
+      .addEventListener("click", fecharModal);
   });
-  document.getElementById('copy_icon').addEventListener('click', evt => {
-    navigator.clipboard.writeText(document.getElementById("metar_raw").textContent);
-  })
+  document
+    .getElementById("copy_icon_metar")
+    .addEventListener("click", (evt) => {
+      navigator.clipboard.writeText(
+        document.getElementById("metar_raw").textContent
+      );
+    });
+  document.getElementById("copy_icon_taf").addEventListener("click", (evt) => {
+    navigator.clipboard.writeText(
+      document.getElementById("taf_raw").textContent
+    );
+  });
   atualizar();
   setInterval(atualizar, 60000);
 })();
