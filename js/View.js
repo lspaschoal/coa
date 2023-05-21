@@ -24,7 +24,7 @@ class View {
     return card;
   };
 
-  gerarModal = function (status) {
+  gerarModal = async function (status) {
     if (METARS.get(status.icao) !== undefined) {
       document.getElementById("metar_raw").textContent = METARS.get(
         status.icao
@@ -32,7 +32,13 @@ class View {
     } else {
       document.getElementById("metar_raw").textContent = "METAR indisponível";
     }
-
+    document.getElementById("taf_raw").textContent =
+      (await fetch(
+        `https://api-redemet.decea.mil.br/mensagens/taf/${status.icao}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
+      )
+        .then((resp) => resp.json())
+        .then((data) => data.data.data[0].mens)) ||
+      `TAF para ${status.icao} não disponível`;
     let mensagem = "";
     DADOS.getPistas(status.icao).forEach((pista) => {
       mensagem += ` RWY: ${pista}<br>`;
