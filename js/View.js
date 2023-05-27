@@ -32,13 +32,13 @@ class View {
     } else {
       document.getElementById("metar_raw").textContent = "METAR indisponível";
     }
-    document.getElementById("taf_raw").textContent =
-      (await fetch(
-        `https://api-redemet.decea.mil.br/mensagens/taf/${status.icao}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
-      )
-        .then((resp) => resp.json())
-        .then((data) => data.data.data[0].mens)) ||
-      `TAF para ${status.icao} não disponível`;
+    await fetch(
+      `https://api-redemet.decea.mil.br/mensagens/taf/${status.icao}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.data.data[0]) { document.getElementById("taf_raw").textContent = data.data.data[0].mens } else { document.getElementById("taf_raw").textContent = `TAF para ${status.icao} não disponível`; }
+      })
     let mensagem = "";
     DADOS.getPistas(status.icao).forEach((pista) => {
       mensagem += ` RWY: ${pista}<br>`;
@@ -265,13 +265,13 @@ class View {
       let icone_seta = document.createElement("img");
       icone_seta.classList.add("icone_pista_em_uso");
       icone_seta.setAttribute("src", "./img/seta.png");
-      if(status.vento === undefined || status.vento.calm){
+      if (status.vento === undefined || status.vento.calm) {
         icone_seta.style.visibility = `hidden`;
-      }else{
-        let rumoPista = Number(thr.cabeceira.replaceAll('R','').replaceAll('L',''))*10
-        let direcaoVento = (status.vento.variable)? (status.vento.direction_max + status.vento.direction_min) / 2 : status.vento.direction;
-        let ventoRelativo = this.anguloRelativo(rumoPista,direcaoVento);
-        if(ventoRelativo <= -90 || ventoRelativo >= 90) icone_seta.style.visibility = `hidden`;
+      } else {
+        let rumoPista = Number(thr.cabeceira.replaceAll('R', '').replaceAll('L', '')) * 10
+        let direcaoVento = (status.vento.variable) ? (status.vento.direction_max + status.vento.direction_min) / 2 : status.vento.direction;
+        let ventoRelativo = this.anguloRelativo(rumoPista, direcaoVento);
+        if (ventoRelativo <= -90 || ventoRelativo >= 90) icone_seta.style.visibility = `hidden`;
       }
       td_em_uso.appendChild(icone_seta);
       linha.appendChild(td_em_uso);
