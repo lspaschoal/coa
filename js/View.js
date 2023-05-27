@@ -43,12 +43,10 @@ class View {
     DADOS.getPistas(status.icao).forEach((pista) => {
       mensagem += ` RWY: ${pista}<br>`;
       mensagem += ` DEP:<br>`;
-      mensagem += `    -DIURNO: ${
-        DADOS.getMinimosDep(status.icao, pista).diurno
-      }m<br>`;
-      mensagem += `    -NOTURNO: ${
-        DADOS.getMinimosDep(status.icao, pista).noturno
-      }m<br>`;
+      mensagem += `    -DIURNO: ${DADOS.getMinimosDep(status.icao, pista).diurno
+        }m<br>`;
+      mensagem += `    -NOTURNO: ${DADOS.getMinimosDep(status.icao, pista).noturno
+        }m<br>`;
       mensagem += ` ARR:<br>`;
       let cabeceiras = pista.split("/");
       let minimo = 5000;
@@ -217,7 +215,7 @@ class View {
     if (vento === undefined || vento.speed === undefined) {
       span_valor.textContent = "N/A";
     } else if (vento.calm) {
-      span_valor.textContent = "VENTO CALMO";
+      span_valor.textContent = "CALMO";
     } else {
       let direcao = vento.direction;
       if (vento.variable) {
@@ -263,6 +261,20 @@ class View {
     tabela.classList.add("tabela_cabeceiras");
     status.cabeceiras.forEach((thr) => {
       let linha = document.createElement("tr");
+      let td_em_uso = document.createElement("td");
+      let icone_seta = document.createElement("img");
+      icone_seta.classList.add("icone_pista_em_uso");
+      icone_seta.setAttribute("src", "./img/seta.png");
+      if(status.vento === undefined || status.vento.calm){
+        icone_seta.style.visibility = `hidden`;
+      }else{
+        let rumoPista = Number(thr.cabeceira.replaceAll('R','').replaceAll('L',''))*10
+        let direcaoVento = (status.vento.variable)? (status.vento.direction_max + status.vento.direction_min) / 2 : status.vento.direction;
+        let ventoRelativo = this.anguloRelativo(rumoPista,direcaoVento);
+        if(ventoRelativo <= -90 || ventoRelativo >= 90) icone_seta.style.visibility = `hidden`;
+      }
+      td_em_uso.appendChild(icone_seta);
+      linha.appendChild(td_em_uso);
       let td_thr = document.createElement("td");
       td_thr.textContent = thr.cabeceira;
       if (thr.qgo_arr) td_thr.classList.add("thr_qgo");
@@ -320,4 +332,12 @@ class View {
     div.appendChild(tabela);
     return div;
   };
+
+  anguloRelativo = (rumoVerdadeiro, direcaoVento) => {
+    let diferenca = direcaoVento - rumoVerdadeiro;
+    if (diferenca < -180) return diferenca + 360;
+    if (diferenca === -180) return 180;
+    if (diferenca > 180) return diferenca - 360;
+    return diferenca;
+  }
 }
