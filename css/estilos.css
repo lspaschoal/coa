@@ -167,6 +167,10 @@ body {
   text-align: center;
 }
 
+.icone_pista_em_uso{
+  width: 0.8rem;
+}
+
 .thr_qgo {
   color: white;
   background-color: #a9042a;
