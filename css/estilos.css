@@ -56,18 +56,18 @@ body {
 }
 
 .card {
-  height: 13rem;
-  width: 23rem;
+  height: 15rem;
+  width: 25rem;
   margin: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(4, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   font-family: LexendDeca-Light;
 }
 
-.card > div {
+.card>div {
   padding: 5px;
   display: flex;
   align-items: center;
@@ -116,6 +116,11 @@ body {
   grid-area: 2 / 3 / 5 / 4;
 }
 
+.linha_hora_metar {
+  grid-area: 5 / 1 / 6 / 4;
+  font-size: 0.9rem;
+}
+
 .VMC {
   background-color: var(--verde-vmc);
   border-radius: 5px;
@@ -134,10 +139,6 @@ body {
 .INDISPONIVEL {
   background-color: var(--cinza-indisponivel);
   border-radius: 5px;
-}
-
-.linha_hora_metar {
-  font-size: 0.7rem;
 }
 
 .icone_condicao {
@@ -159,19 +160,19 @@ body {
   border-spacing: 0.2rem;
 }
 
-.tabela_cabeceiras > tr > td {
+.tabela_cabeceiras>tr>td {
   width: 2rem;
   margin: 1rem;
   border-radius: 0.3rem;
   text-align: center;
 }
 
-.tabela_cabeceiras > tr > td:not(:first-child) {
+.tabela_cabeceiras>tr>td:not(:first-child) {
   font-size: 0.8rem;
   text-align: center;
 }
 
-.icone_pista_em_uso{
+.icone_pista_em_uso {
   width: 0.8rem;
 }
 
@@ -225,7 +226,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.metar_modal > span {
+.metar_modal>span {
   font-size: 1.8rem;
 }
 
