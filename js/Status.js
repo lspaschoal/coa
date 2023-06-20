@@ -43,6 +43,8 @@ class Status {
 
     setMeteorologia = function (metar) {
         if (metar === undefined) return;
+        this.fonte = metar._type;
+        this.horario = `${metar._UTCTime.substring(0,2)}:${metar._UTCTime.substring(2,4)}`
         this.condicao = (metar.isVMC()) ? 'VMC' : 'IMC';
         this.visibilidade = metar.getVisibility();
         this.teto = metar.getCeiling();
