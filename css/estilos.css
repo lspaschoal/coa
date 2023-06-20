@@ -136,6 +136,10 @@ body {
   border-radius: 5px;
 }
 
+.linha_hora_metar {
+  font-size: 0.7rem;
+}
+
 .icone_condicao {
   width: 1.8rem;
   margin-right: 3px;
