@@ -16,8 +16,8 @@
 //SPECI SBLI 071006Z AUTO 02022KT 3300 -RA NCD 28/23 Q1015 W///S4=
 
 function debug(item, leitura) {
-  console.log("Testando: " + item);
-  console.log(" > " + leitura);
+  //console.log("Testando: " + item);
+  //console.log(" > " + leitura);
 }
 class Metar {
   _VMC = {
