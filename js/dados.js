@@ -1530,7 +1530,7 @@ adicionaProcedimento('SBGL', '15', 'RNP', 1200, undefined, 500);
 adicionaProcedimento('SBGL', '33', 'RNP', 2100, undefined, 500);
 adicionaProcedimento('SBGO', '14', 'RNP', 1900, undefined, 400);
 adicionaProcedimento('SBGO', '32', 'RNP', 1700, undefined, 400);
-adicionaProcedimento('SBGR', '10R', 'ILS', 350, undefined, 100);
+adicionaProcedimento('SBGR', '10R', 'ILS', 300, undefined, 100);
 adicionaProcedimento('SBGR', '10R', 'RNP', 1300, undefined, 500);
 adicionaProcedimento('SBGR', '28L', 'ILS', 550, undefined, 200);
 adicionaProcedimento('SBGR', '28L', 'RNP', 1200, undefined, 500);
