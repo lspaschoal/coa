@@ -497,6 +497,16 @@ AEROPORTOS.SBRJ = {
     ifr: true,
     pistas: {}
 };
+AEROPORTOS.SBRP = {
+    iata: 'RAO',
+    administrador: 'Rede Voa',
+    nome: 'Aeroporto Leite Lopes',
+    cidade: 'Ribeirão Preto',
+    estado: 'SP',
+    vfr_noturno: true,
+    ifr: true,
+    pistas: {}
+};
 AEROPORTOS.SBSG = {
     iata: 'NAT',
     administrador: 'Inframérica',
@@ -1244,6 +1254,17 @@ AEROPORTOS.SBRJ.pistas.RWY_02R_20L = {
     min_dep_diurno: 4000,
     min_dep_noturno: 4000
 };
+AEROPORTOS.SBRP.pistas.RWY_18_36 = {
+    designativo: '18/36',
+    comprimento: 2100,
+    largura: 45,
+    rclm: true,
+    rcll: false,
+    hirl: false,
+    rvr: 0,
+    min_dep_diurno: 800,
+    min_dep_noturno: 800
+};
 AEROPORTOS.SBSG.pistas.RWY_12_30 = {
     designativo: '12/30',
     comprimento: 3000,
@@ -1490,6 +1511,8 @@ adicionaProcedimento('SBCG', '06', 'ILS', 1100, undefined, 200);
 adicionaProcedimento('SBCG', '06', 'RNP', 1100, undefined, 300);
 adicionaProcedimento('SBCG', '24', 'RNP', 1100, undefined, 300);
 adicionaProcedimento('SBCH', '11', 'RNP', 1500, undefined, 400);
+adicionaProcedimento('SBCH', '11', 'RNPAR', 1600, undefined, 300);
+adicionaProcedimento('SBCH', '29', 'RNP', 5000, undefined, 1000);
 adicionaProcedimento('SBCT', '15', 'ILS', 350, undefined, 100);
 adicionaProcedimento('SBCT', '15', 'RNP', 800, undefined, 400);
 adicionaProcedimento('SBCT', '33', 'ILS', 1200, undefined, 200);
@@ -1506,7 +1529,7 @@ adicionaProcedimento('SBCY', '35', 'RNP', 1400, undefined, 300);
 adicionaProcedimento('SBCZ', '10', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBCZ', '28', 'RNP', 1400, undefined, 400);
 adicionaProcedimento('SBEG', '11', 'ILS', 800, undefined, 300);
-adicionaProcedimento('SBEG', '11', 'RNP', 900, undefined, 400);
+adicionaProcedimento('SBEG', '11', 'RNP', 800, undefined, 300);
 adicionaProcedimento('SBEG', '29', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBFI', '15', 'ILS', 1100, undefined, 200);
 adicionaProcedimento('SBFI', '15', 'RNP', 1250, undefined, 300);
@@ -1534,7 +1557,7 @@ adicionaProcedimento('SBGR', '10R', 'ILS', 300, undefined, 100);
 adicionaProcedimento('SBGR', '10R', 'RNP', 1300, undefined, 500);
 adicionaProcedimento('SBGR', '28L', 'ILS', 550, undefined, 200);
 adicionaProcedimento('SBGR', '28L', 'RNP', 1200, undefined, 500);
-adicionaProcedimento('SBGR', '10L', 'ILS', 350, undefined, 100);
+adicionaProcedimento('SBGR', '10L', 'ILS', 300, undefined, 100);
 adicionaProcedimento('SBGR', '10L', 'RNP', 1400, undefined, 500);
 adicionaProcedimento('SBGR', '10L', 'RNPAR', 1200, undefined, 500);
 adicionaProcedimento('SBGR', '28R', 'ILS', 550, undefined, 200);
@@ -1548,26 +1571,25 @@ adicionaProcedimento('SBJE', '26', 'RNP', 1400, undefined, 300);
 adicionaProcedimento('SBJP', '16', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBJP', '34', 'RNP', 1400, undefined, 300);
 adicionaProcedimento('SBJU', '13', 'RNP', 2000, undefined, 500);
-adicionaProcedimento('SBJU', '31', 'RNP', 1900, undefined, 500);
+adicionaProcedimento('SBJU', '31', 'RNP', 2200, undefined, 500);
 adicionaProcedimento('SBJV', '15', 'RNP', 2400, undefined, 600);
 adicionaProcedimento('SBJV', '15', 'RNPAR', 2000, undefined, 500);
 adicionaProcedimento('SBJV', '33', 'ILS', 1200, undefined, 200);
 adicionaProcedimento('SBJV', '33', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBJV', '33', 'RNPAR', 1900, undefined, 500);
 adicionaProcedimento('SBKG', '15', 'ILS', 2600, undefined, 600);
-adicionaProcedimento('SBKG', '15', 'RNP', 1600, undefined, 400);
-adicionaProcedimento('SBKG', '33', 'RNP', 1400, undefined, 400);
+adicionaProcedimento('SBKG', '15', 'RNP', 1800, undefined, 400);
+adicionaProcedimento('SBKG', '15', 'RNPAR', 1700, undefined, 400);
+adicionaProcedimento('SBKG', '33', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBKP', '15', 'ILS', 550, undefined, 200);
 adicionaProcedimento('SBKP', '15', 'RNP', 1100, undefined, 400);
 adicionaProcedimento('SBKP', '15', 'RNPAR', 1000, undefined, 400);
 adicionaProcedimento('SBKP', '33', 'RNP', 1700, undefined, 400);
 adicionaProcedimento('SBKP', '33', 'RNPAR', 1700, undefined, 400);
-adicionaProcedimento('SBLO', '13', 'RNPAR02', 1400, undefined, 300);
-adicionaProcedimento('SBLO', '13', 'RNPAR03', 2600, undefined, 600);
-adicionaProcedimento('SBLO', '31', 'RNPAR02', 1600, undefined, 400);
-adicionaProcedimento('SBLO', '31', 'RNPAR03', 2200, undefined, 500);
 adicionaProcedimento('SBLO', '13', 'RNP', 2500, undefined, 600);
+adicionaProcedimento('SBLO', '13', 'RNPAR', 2600, undefined, 600);
 adicionaProcedimento('SBLO', '31', 'RNP', 1400, undefined, 400);
+adicionaProcedimento('SBLO', '31', 'RNPAR', 2200, undefined, 500);
 adicionaProcedimento('SBMG', '10', 'RNP', 1500, undefined, 400);
 adicionaProcedimento('SBMG', '10', 'RNPAR', 1700, undefined, 400);
 adicionaProcedimento('SBMG', '28', 'RNP', 1800, undefined, 400);
@@ -1606,6 +1628,8 @@ adicionaProcedimento('SBRJ', '02R', 'RNP', 4800, undefined, 1200);
 adicionaProcedimento('SBRJ', '02R', 'RNPAR', 1600, undefined, 300);
 adicionaProcedimento('SBRJ', '20L', 'RNP', 4400, undefined, 700);
 adicionaProcedimento('SBRJ', '20L', 'RNPAR', 1600, undefined, 300);
+adicionaProcedimento('SBRP', '18', 'RNP', 1500, undefined, 400);
+adicionaProcedimento('SBRP', '36', 'RNP', 2200, undefined, 500);
 adicionaProcedimento('SBSG', '12', 'ILS', 550, undefined, 300);
 adicionaProcedimento('SBSG', '12', 'RNP', 1600, undefined, 400);
 adicionaProcedimento('SBSG', '30', 'RNP', 1300, undefined, 300);
