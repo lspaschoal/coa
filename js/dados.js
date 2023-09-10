@@ -1371,8 +1371,19 @@ AEROPORTOS.SBSN.pistas.RWY_10_28 = {
   min_dep_diurno: 800,
   min_dep_noturno: 800,
 };
-AEROPORTOS.SBSP.pistas.RWY_09_27 = {
-  designativo: "09/27",
+AEROPORTOS.SBSP.pistas.RWY_17R_35L = {
+  designativo: "17R/35L",
+  comprimento: 1940,
+  largura: 45,
+  rclm: true,
+  rcll: false,
+  hirl: true,
+  rvr: 2,
+  min_dep_diurno: 350,
+  min_dep_noturno: 350,
+};
+AEROPORTOS.SBSR.pistas.RWY_07_25 = {
+  designativo: "07/25",
   comprimento: 1640,
   largura: 35,
   rclm: true,
