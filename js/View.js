@@ -1,69 +1,72 @@
 const DMG = {};
-DMG['SBAR']=23
-DMG['SBAT']=19
-DMG['SBBE']=20
-DMG['SBBG']=15
-DMG['SBBH']=23
-DMG['SBBI']=20
-DMG['SBBR']=22
-DMG['SBBV']=16
-DMG['SBCA']=18
-DMG['SBCB']=23
-DMG['SBCF']=23
-DMG['SBCG']=18
-DMG['SBCH']=18
-DMG['SBCT']=20
-DMG['SBCX']=18
-DMG['SBCY']=18
-DMG['SBCZ']=7
-DMG['SBEG']=16
-DMG['SBFI']=17
-DMG['SBFL']=20
-DMG['SBFN']=19
-DMG['SBFZ']=21
-DMG['SBGL']=23
-DMG['SBGO']=21
-DMG['SBGR']=22
-DMG['SBIL']=24
-DMG['SBIZ']=21
-DMG['SBJE']=21
-DMG['SBJP']=21
-DMG['SBJR']=23
-DMG['SBJU']=22
-DMG['SBJV']=20
-DMG['SBKG']=22
-DMG['SBKP']=22
-DMG['SBLO']=20
-DMG['SBMG']=19
-DMG['SBMO']=22
-DMG['SBMQ']=19
-DMG['SBNF']=20
-DMG['SBPA']=18
-DMG['SBPJ']=22
-DMG['SBPK']=16
-DMG['SBPL']=22
-DMG['SBPS']=24
-DMG['SBPV']=14
-DMG['SBRB']=11
-DMG['SBRD']=19
-DMG['SBRF']=21
-DMG['SBRJ']=23
-DMG['SBRP']=22
-DMG['SBSG']=21
-DMG['SBSI']=19
-DMG['SBSL']=21
-DMG['SBSN']=19
-DMG['SBSP']=22
-DMG['SBSV']=23
-DMG['SBTC']=24
-DMG['SBTE']=21
-DMG['SBTF']=14
-DMG['SBTT']=10
-DMG['SBUG']=13
-DMG['SBUL']=22
-DMG['SBVC']=23
-DMG['SBVT']=24
-DMG['SBZM']=23
+DMG["SBAR"] = 23;
+DMG["SBAT"] = 19;
+DMG["SBBE"] = 20;
+DMG["SBBG"] = 15;
+DMG["SBBH"] = 23;
+DMG["SBBI"] = 20;
+DMG["SBBR"] = 22;
+DMG["SBBV"] = 16;
+DMG["SBCA"] = 18;
+DMG["SBCB"] = 23;
+DMG["SBCF"] = 23;
+DMG["SBCG"] = 18;
+DMG["SBCH"] = 18;
+DMG["SBCT"] = 20;
+DMG["SBCX"] = 18;
+DMG["SBCY"] = 18;
+DMG["SBCZ"] = 7;
+DMG["SBEG"] = 16;
+DMG["SBFI"] = 17;
+DMG["SBFL"] = 20;
+DMG["SBFN"] = 19;
+DMG["SBFZ"] = 21;
+DMG["SBGL"] = 23;
+DMG["SBGO"] = 21;
+DMG["SBGR"] = 22;
+DMG["SBIL"] = 24;
+DMG["SBIZ"] = 21;
+DMG["SBJE"] = 21;
+DMG["SBJA"] = 19;
+DMG["SBJP"] = 21;
+DMG["SBJR"] = 23;
+DMG["SBJU"] = 22;
+DMG["SBJV"] = 20;
+DMG["SBKG"] = 22;
+DMG["SBKP"] = 22;
+DMG["SBLO"] = 20;
+DMG["SBMG"] = 19;
+DMG["SBMO"] = 22;
+DMG["SBMQ"] = 19;
+DMG["SBNF"] = 20;
+DMG["SBPA"] = 18;
+DMG["SBPF"] = 17;
+DMG["SBPJ"] = 22;
+DMG["SBPK"] = 16;
+DMG["SBPL"] = 22;
+DMG["SBPS"] = 24;
+DMG["SBPV"] = 14;
+DMG["SBRB"] = 11;
+DMG["SBRD"] = 19;
+DMG["SBRF"] = 21;
+DMG["SBRJ"] = 23;
+DMG["SBRP"] = 22;
+DMG["SBSG"] = 21;
+DMG["SBSI"] = 19;
+DMG["SBSL"] = 21;
+DMG["SBSN"] = 19;
+DMG["SBSP"] = 22;
+DMG["SBSR"] = 21;
+DMG["SBSV"] = 23;
+DMG["SBTC"] = 24;
+DMG["SBTE"] = 21;
+DMG["SBTF"] = 14;
+DMG["SBTT"] = 10;
+DMG["SBUG"] = 13;
+DMG["SBUL"] = 22;
+DMG["SBVC"] = 23;
+DMG["SBVT"] = 24;
+DMG["SBZM"] = 23;
 
 class View {
   constructor() {
@@ -81,7 +84,9 @@ class View {
     card.appendChild(
       this.linhaSuperior(status.icao, status.iata, status.condicao)
     );
-    card.appendChild(this.linhaHoraMetar(status.icao,status.fonte,status.horario));
+    card.appendChild(
+      this.linhaHoraMetar(status.icao, status.fonte, status.horario)
+    );
     card.appendChild(this.div_visibilidade(status.visibilidade));
     card.appendChild(this.div_meteorologia(status.meteorologia));
     card.appendChild(this.div_teto(status.teto));
@@ -101,24 +106,29 @@ class View {
       document.getElementById("metar_raw").textContent = "METAR indisponível";
     }
     await fetch(
-        `https://api-redemet.decea.mil.br/mensagens/taf/${status.icao}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
-      )
+      `https://api-redemet.decea.mil.br/mensagens/taf/${status.icao}?api_key=6vmvTQDP1t8thEEAUkCCj4z4TRjrJLcb561p1SRi`
+    )
       .then((resp) => resp.json())
       .then((data) => {
         if (data.data.data[0]) {
-          document.getElementById("taf_raw").textContent = data.data.data[0].mens
+          document.getElementById("taf_raw").textContent =
+            data.data.data[0].mens;
         } else {
-          document.getElementById("taf_raw").textContent = `TAF para ${status.icao} não disponível`;
+          document.getElementById(
+            "taf_raw"
+          ).textContent = `TAF para ${status.icao} não disponível`;
         }
-      })
+      });
     let mensagem = "";
     DADOS.getPistas(status.icao).forEach((pista) => {
       mensagem += ` RWY: ${pista}<br>`;
       mensagem += ` DEP:<br>`;
-      mensagem += `    -DIURNO: ${DADOS.getMinimosDep(status.icao, pista).diurno
-        }m<br>`;
-      mensagem += `    -NOTURNO: ${DADOS.getMinimosDep(status.icao, pista).noturno
-        }m<br>`;
+      mensagem += `    -DIURNO: ${
+        DADOS.getMinimosDep(status.icao, pista).diurno
+      }m<br>`;
+      mensagem += `    -NOTURNO: ${
+        DADOS.getMinimosDep(status.icao, pista).noturno
+      }m<br>`;
       mensagem += ` ARR:<br>`;
       let cabeceiras = pista.split("/");
       let minimo = 5000;
@@ -177,11 +187,11 @@ class View {
     return div_linha;
   };
 
-  linhaHoraMetar = function (icao,fonte,horario) {
+  linhaHoraMetar = function (icao, fonte, horario) {
     let div_linha = document.createElement("div");
     div_linha.classList.add("linha_hora_metar");
     if (METARS.get(icao) !== undefined) {
-      div_linha.textContent = `Fonte: ${fonte} - ${horario}UTC`
+      div_linha.textContent = `Fonte: ${fonte} - ${horario}UTC`;
     } else {
       document.getElementById("metar_raw").textContent = " ";
     }
@@ -252,9 +262,9 @@ class View {
     if (teto === undefined) {
       span_valor.textContent = "N/A";
     } else {
-      teto === "UNL" ?
-        (span_valor.textContent = "UNL") :
-        (span_valor.textContent = teto + "ft");
+      teto === "UNL"
+        ? (span_valor.textContent = "UNL")
+        : (span_valor.textContent = teto + "ft");
     }
     div.appendChild(span_valor);
     return div;
@@ -346,11 +356,15 @@ class View {
       if (status.vento === undefined || status.vento.calm) {
         icone_seta.style.visibility = `hidden`;
       } else {
-        let rumoPista = Number(thr.cabeceira.replaceAll('R', '').replaceAll('L', '')) * 10
-        let direcaoVento = (status.vento.variable) ? (status.vento.direction_max + status.vento.direction_min) / 2 : status.vento.direction;
+        let rumoPista =
+          Number(thr.cabeceira.replaceAll("R", "").replaceAll("L", "")) * 10;
+        let direcaoVento = status.vento.variable
+          ? (status.vento.direction_max + status.vento.direction_min) / 2
+          : status.vento.direction;
         direcaoVento += DMG[status.icao];
         let ventoRelativo = this.anguloRelativo(rumoPista, direcaoVento);
-        if (ventoRelativo <= -90 || ventoRelativo >= 90) icone_seta.style.visibility = `hidden`;
+        if (ventoRelativo <= -90 || ventoRelativo >= 90)
+          icone_seta.style.visibility = `hidden`;
       }
       td_em_uso.appendChild(icone_seta);
       linha.appendChild(td_em_uso);
@@ -375,9 +389,8 @@ class View {
         );
         if (condicao_rnp !== null) {
           condicao_rnp
-            ?
-            td_rnp.classList.add("proc_ok") :
-            td_rnp.classList.add("proc_qgo");
+            ? td_rnp.classList.add("proc_ok")
+            : td_rnp.classList.add("proc_qgo");
         } else {
           td_rnp.classList.add("proc_na");
         }
@@ -387,9 +400,8 @@ class View {
         );
         if (condicao_rnav !== null) {
           condicao_rnav
-            ?
-            td_rnav.classList.add("proc_ok") :
-            td_rnav.classList.add("proc_qgo");
+            ? td_rnav.classList.add("proc_ok")
+            : td_rnav.classList.add("proc_qgo");
         } else {
           td_rnav.classList.add("proc_na");
         }
@@ -399,9 +411,8 @@ class View {
         );
         if (condicao_ils !== null) {
           condicao_ils
-            ?
-            td_ils.classList.add("proc_ok") :
-            td_ils.classList.add("proc_qgo");
+            ? td_ils.classList.add("proc_ok")
+            : td_ils.classList.add("proc_qgo");
         } else {
           td_ils.classList.add("proc_na");
         }
@@ -421,5 +432,5 @@ class View {
     if (diferenca === -180) return 180;
     if (diferenca > 180) return diferenca - 360;
     return diferenca;
-  }
+  };
 }
